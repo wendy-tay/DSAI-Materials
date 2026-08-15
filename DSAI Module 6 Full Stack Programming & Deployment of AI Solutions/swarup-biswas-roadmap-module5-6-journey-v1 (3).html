@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5 &amp; 6 — the learning journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1A5F5F;
+    --near-black: #141413;
+    --amber: #D47A3A;
+    --warm-white: #F8F6F1;
+    --mid-stone: #B0AEA5;
+    --charcoal: #2D2D2D;
+    --light-teal: #EBF4F4;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Lora', Palatino, serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  h1, h2, h3, .badge, .num, .arc-label, .dep-chip, .stop-label {
+    font-family: 'Poppins', 'Trebuchet MS', sans-serif;
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- header ---------- */
+  header {
+    background: var(--teal);
+    color: var(--white);
+    padding: 56px 0 48px;
+  }
+  header .eyebrow {
+    font-family: 'Poppins', 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    color: var(--light-teal);
+    margin-bottom: 10px;
+  }
+  header h1 { font-weight: 700; font-size: 40px; line-height: 1.25; }
+  header p.sub {
+    max-width: 720px;
+    margin-top: 16px;
+    font-size: 18px;
+    color: #E7F0F0;
+  }
+  header .meta {
+    margin-top: 22px;
+    font-family: 'Poppins', 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--light-teal);
+  }
+
+  /* ---------- big picture strip ---------- */
+  .bigpicture { padding: 44px 0 8px; }
+  .bigpicture h2 { color: var(--teal); font-size: 26px; margin-bottom: 8px; }
+  .bigpicture p { max-width: 780px; margin-bottom: 26px; }
+
+  .overview {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+  .stop {
+    flex: 1 1 0;
+    min-width: 150px;
+    position: relative;
+    padding: 16px 14px 14px;
+    background: var(--white);
+    border: 1px solid var(--mid-stone);
+    border-right: none;
+  }
+  .stop:first-child { border-radius: 8px 0 0 8px; }
+  .stop:last-child { border-right: 1px solid var(--mid-stone); border-radius: 0 8px 8px 0; }
+  .stop .stop-label { font-weight: 700; font-size: 15px; color: var(--teal); }
+  .stop .stop-sessions { font-size: 13px; color: var(--mid-stone); font-family: 'Poppins','Trebuchet MS',sans-serif; font-weight: 600; margin-top: 2px; }
+  .stop p { font-size: 14px; margin-top: 8px; line-height: 1.45; }
+  .stop::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; right: -1px;
+    width: 3px;
+    background: var(--teal);
+  }
+  .stop:last-child::after { display: none; }
+
+  /* ---------- legend ---------- */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 26px;
+    padding: 26px 0 10px;
+    align-items: center;
+  }
+  .legend .item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  .badge {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .badge.m5 { background: var(--light-teal); color: var(--teal); border: 1px solid var(--teal); }
+  .badge.m6 { background: var(--teal); color: var(--white); border: 1px solid var(--teal); }
+  .badge.sprint { background: var(--white); color: var(--charcoal); border: 1px dashed var(--mid-stone); }
+  .badge.deploy { background: var(--amber); color: var(--white); border: 1px solid var(--amber); }
+
+  /* ---------- journey ---------- */
+  .journey { padding: 26px 0 30px; }
+  .arc { position: relative; padding: 0 0 44px 34px; border-left: 3px solid var(--teal); margin-left: 8px; }
+  .arc:last-child { padding-bottom: 10px; }
+  .arc::before {
+    content: "";
+    position: absolute;
+    left: -12px; top: 2px;
+    width: 21px; height: 21px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 4px solid var(--warm-white);
+  }
+  .arc-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--mid-stone);
+    letter-spacing: 0.05em;
+  }
+  .arc h2 { color: var(--teal); font-size: 24px; margin: 2px 0 6px; }
+  .arc > p.arc-intro { max-width: 760px; margin-bottom: 20px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--mid-stone);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 16px 18px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .card.sprint-card { background: var(--light-teal); }
+  .card .topline { display: flex; align-items: baseline; gap: 10px; }
+  .card .num {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--teal);
+    background: var(--light-teal);
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    align-self: center;
+  }
+  .card.sprint-card .num { background: var(--white); }
+  .card h3 { font-size: 17px; font-weight: 600; color: var(--near-black); line-height: 1.35; }
+  .card p { font-size: 14px; line-height: 1.5; }
+  .card .lbl {
+    display: block;
+    font-family: 'Poppins','Trebuchet MS',sans-serif;
+    font-weight: 600;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    margin-bottom: 1px;
+  }
+  .card .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+
+  /* ---------- capstone spine ---------- */
+  .capstone {
+    background: var(--light-teal);
+    padding: 44px 0 50px;
+    margin-top: 26px;
+  }
+  .capstone h2 { color: var(--teal); font-size: 26px; margin-bottom: 8px; }
+  .capstone > .wrap > p { max-width: 780px; margin-bottom: 28px; }
+  .deployments { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+  .dep {
+    background: var(--white);
+    border: 1px solid var(--mid-stone);
+    border-top: 4px solid var(--amber);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .dep .dep-chip {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--amber);
+  }
+  .dep p { font-size: 14px; margin-top: 6px; line-height: 1.45; }
+
+  /* ---------- how to use ---------- */
+  .howto { padding: 44px 0 20px; }
+  .howto h2 { color: var(--teal); font-size: 26px; margin-bottom: 12px; }
+  .howto ul { max-width: 780px; padding-left: 22px; }
+  .howto li { margin-bottom: 10px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 40px;
+    border-top: 1px solid var(--mid-stone);
+    padding: 22px 0 34px;
+    font-family: 'Poppins','Trebuchet MS',sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--mid-stone);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 700px) {
+    header h1 { font-size: 30px; }
+    .overview { flex-direction: column; }
+    .stop { border-right: 1px solid var(--mid-stone); border-bottom: none; border-radius: 0; }
+    .stop:first-child { border-radius: 8px 8px 0 0; }
+    .stop:last-child { border-bottom: 1px solid var(--mid-stone); border-radius: 0 0 8px 8px; }
+    .stop::after { top: auto; left: 0; right: 0; bottom: -1px; width: auto; height: 3px; }
+  }
+
+  @media print {
+    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .arc { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">SCTP DSAI · Modules 5 &amp; 6</div>
+    <h1>The learning journey, end to end</h1>
+    <p class="sub">Fifteen sessions take you from understanding what a language model is to shipping a deployed, multi-agent application. This page shows where each session sits in that journey and how the capstone project grows alongside it.</p>
+    <div class="meta">Fifteen sessions · Five deployments · Module 5: Gen AI · Module 6: Agentic systems</div>
+  </div>
+</header>
+
+<section class="bigpicture">
+  <div class="wrap">
+    <h2>The big picture in five arcs</h2>
+    <p>The journey is not fifteen separate topics; it is five arcs that build on one another. Each arc ends with something you can run, and from arc two onwards, something you have deployed.</p>
+    <div class="overview">
+      <div class="stop">
+        <div class="stop-label">Foundations</div>
+        <div class="stop-sessions">Sessions 1–4</div>
+        <p>How LLMs work, how to use them responsibly, and how to shape what they do with prompts and context.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-label">First working app</div>
+        <div class="stop-sessions">Sessions 5–7</div>
+        <p>Turn those foundations into a full-stack, single-turn LLM app — and deploy it.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-label">From apps to agents</div>
+        <div class="stop-sessions">Sessions 8–9</div>
+        <p>Give the app skills and agency, and a proper user experience on a live website.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-label">Agentic RAG</div>
+        <div class="stop-sessions">Sessions 10–11</div>
+        <p>Connect your agent to your own knowledge with retrieval, engineered as a harness.</p>
+      </div>
+      <div class="stop">
+        <div class="stop-label">Automation &amp; orchestration</div>
+        <div class="stop-sessions">Sessions 12–15</div>
+        <p>Automate workflows, deliver like a product team, and coordinate multiple agents.</p>
+      </div>
+    </div>
+
+    <div class="legend">
+      <span class="item"><span class="badge m5">Module 5 · Gen AI</span></span>
+      <span class="item"><span class="badge m6">Module 6</span></span>
+      <span class="item"><span class="badge sprint">Capstone work sprint</span> — protected time to apply the day's material to your own project</span>
+      <span class="item"><span class="badge deploy">Deployment</span> — a milestone where your capstone ships</span>
+    </div>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="wrap">
+
+    <div class="arc">
+      <div class="arc-label">Arc 1 · Sessions 1–4</div>
+      <h2>Foundations — how to think about generative AI</h2>
+      <p class="arc-intro">Before you build anything, you need a working mental model of what these systems are, where they fail, and how to direct them. Everything you build later rests on these four sessions.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="topline"><span class="num">1</span><h3>Responsible AI</h3></div>
+          <p><span class="lbl">In this journey</span>Sets the guardrails before you build anything, so every app that follows is one you can defend.</p>
+          <p><span class="lbl">In real life</span>Any time you put AI in front of customers or colleagues — questions about privacy, bias, and accountability arrive before the first user does.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+        <div class="card">
+          <div class="topline"><span class="num">2</span><h3>Understanding LLMs</h3></div>
+          <p><span class="lbl">In this journey</span>The mental model every later session stands on: what a model can do, and why it fails the way it does.</p>
+          <p><span class="lbl">In real life</span>Choosing the right model for a task, judging vendor claims, and explaining to your team what AI can and cannot automate.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+        <div class="card">
+          <div class="topline"><span class="num">3</span><h3>Prompt engineering</h3></div>
+          <p><span class="lbl">In this journey</span>Your first control surface: instructions that reliably get the output you want from a model.</p>
+          <p><span class="lbl">In real life</span>Every day you work with an AI tool, and every system prompt inside every product you will ever build.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+        <div class="card">
+          <div class="topline"><span class="num">4</span><h3>Context engineering</h3></div>
+          <p><span class="lbl">In this journey</span>Your second control surface: everything else the model sees — documents, history, and tools.</p>
+          <p><span class="lbl">In real life</span>Making AI answer from your organisation's information instead of guessing — the difference between a demo and a dependable tool.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc">
+      <div class="arc-label">Arc 2 · Sessions 5–7</div>
+      <h2>Your first working app</h2>
+      <p class="arc-intro">Foundations become software. You prototype quickly, learn the first building block of an LLM application, and by the end of the arc your capstone exists as a deployed full-stack app.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="topline"><span class="num">5</span><h3>Building an app — quick prototyping</h3></div>
+          <p><span class="lbl">In this journey</span>Turns the foundations into your first running software, fast, before you invest in building properly.</p>
+          <p><span class="lbl">In real life</span>Testing an idea cheaply before anyone commits money or weeks of work — at your job, in a startup, or in a hackathon.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+        <div class="card">
+          <div class="topline"><span class="num">6</span><h3>Building block #1 — single-turn LLM apps</h3></div>
+          <p><span class="lbl">In this journey</span>The core pattern behind every LLM application: one request in, one model call, one response out.</p>
+          <p><span class="lbl">In real life</span>Most workplace AI features are exactly this — summarisers, classifiers, drafters, and extractors.</p>
+          <div class="badges"><span class="badge m5">Module 5</span></div>
+        </div>
+        <div class="card sprint-card">
+          <div class="topline"><span class="num">7</span><h3>Full stack — single-turn LLM apps</h3></div>
+          <p><span class="lbl">In this journey</span>Wraps that pattern in a real front end and back end, and ships it as your first capstone deployment.</p>
+          <p><span class="lbl">In real life</span>Shipping an internal tool your team can actually open in a browser — and a live project for your portfolio.</p>
+          <div class="badges"><span class="badge m5">Module 5</span><span class="badge sprint">Capstone work sprint</span><span class="badge deploy">Deployment 1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc">
+      <div class="arc-label">Arc 3 · Sessions 8–9</div>
+      <h2>From apps to agents</h2>
+      <p class="arc-intro">Module 6 begins here. A single-turn app answers once and stops; an agent can use skills and take steps. This arc also makes your project presentable, with proper UX on a live website.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="topline"><span class="num">8</span><h3>Skills and agents</h3></div>
+          <p><span class="lbl">In this journey</span>The turn from apps that answer to agents that act: skills, tool use, and the loop that lets a model take steps.</p>
+          <p><span class="lbl">In real life</span>Assistants that do the work — search systems, update records, file the result — rather than just describing it.</p>
+          <div class="badges"><span class="badge m6">Module 6</span></div>
+        </div>
+        <div class="card sprint-card">
+          <div class="topline"><span class="num">9</span><h3>Building block #2 — UX design and deploying a website</h3></div>
+          <p><span class="lbl">In this journey</span>Makes your project usable and public: a designed experience on a live website, shipped as your second deployment.</p>
+          <p><span class="lbl">In real life</span>Adoption is a design problem — the tools people trust and enjoy are the ones that survive in an organisation.</p>
+          <div class="badges"><span class="badge m6">Module 6</span><span class="badge sprint">Capstone work sprint</span><span class="badge deploy">Deployment 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc">
+      <div class="arc-label">Arc 4 · Sessions 10–11</div>
+      <h2>Agentic RAG — give your agent knowledge</h2>
+      <p class="arc-intro">A capable agent still needs your data. Retrieval-augmented generation connects the agent to documents it was never trained on, and harness engineering is how you build that connection so it is testable and reliable.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="topline"><span class="num">10</span><h3>Building block #3 — harness engineering for agentic RAG</h3></div>
+          <p><span class="lbl">In this journey</span>The retrieval building block: how an agent finds, ranks, and uses your documents inside a controlled harness.</p>
+          <p><span class="lbl">In real life</span>The most requested Gen AI system in companies today — assistants that answer from policy manuals, contracts, and support knowledge.</p>
+          <div class="badges"><span class="badge m6">Module 6</span></div>
+        </div>
+        <div class="card sprint-card">
+          <div class="topline"><span class="num">11</span><h3>Full stack — harness engineering for agentic RAG</h3></div>
+          <p><span class="lbl">In this journey</span>Builds the full application around agentic RAG and ships it as your third deployment.</p>
+          <p><span class="lbl">In real life</span>Knowledge assistants for HR, legal, operations, or customer support — grounded in the organisation's own documents.</p>
+          <div class="badges"><span class="badge m6">Module 6</span><span class="badge sprint">Capstone work sprint</span><span class="badge deploy">Deployment 3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arc">
+      <div class="arc-label">Arc 5 · Sessions 12–15</div>
+      <h2>Automation, delivery and orchestration</h2>
+      <p class="arc-intro">The final arc scales you up: workflows that run without you, the delivery discipline real teams use, and systems where several agents work together. The journey ends with your fifth and final deployment.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="topline"><span class="num">12</span><h3>Building block #4 — workflow automation with a chat bot</h3></div>
+          <p><span class="lbl">In this journey</span>The automation building block: triggers, logic, and a chat bot connected so work happens without manual steps.</p>
+          <p><span class="lbl">In real life</span>Everyday office automation — bots that triage requests, generate reports on schedule, and connect the tools you already use.</p>
+          <div class="badges"><span class="badge m6">Module 6</span></div>
+        </div>
+        <div class="card sprint-card">
+          <div class="topline"><span class="num">13</span><h3>Workflow automation with RAG</h3></div>
+          <p><span class="lbl">In this journey</span>Combines automation with retrieval so your workflows can reason over your own knowledge — shipped as deployment four.</p>
+          <p><span class="lbl">In real life</span>Pipelines that answer customer emails from a knowledge base or process documents end to end without a person in the middle.</p>
+          <div class="badges"><span class="badge m6">Module 6</span><span class="badge sprint">Capstone work sprint</span><span class="badge deploy">Deployment 4</span></div>
+        </div>
+        <div class="card">
+          <div class="topline"><span class="num">14</span><h3>Project delivery — Agile and Scrum</h3></div>
+          <p><span class="lbl">In this journey</span>The delivery frame for the final push: how you plan, iterate, and ship the capstone like a product team.</p>
+          <p><span class="lbl">In real life</span>How almost every tech team works day to day — sprints, backlogs, stand-ups — and the language expected in interviews.</p>
+          <div class="badges"><span class="badge m6">Module 6</span></div>
+        </div>
+        <div class="card sprint-card">
+          <div class="topline"><span class="num">15</span><h3>Multi-agent orchestration with RAG</h3></div>
+          <p><span class="lbl">In this journey</span>The finale: several agents coordinated on one problem, grounded in retrieval, shipped as your fifth deployment.</p>
+          <p><span class="lbl">In real life</span>Complex processes split across specialist agents — research, drafting, review — which is where production AI systems are heading.</p>
+          <div class="badges"><span class="badge m6">Module 6</span><span class="badge sprint">Capstone work sprint</span><span class="badge deploy">Deployment 5</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="capstone">
+  <div class="wrap">
+    <h2>The capstone spine — one project, five deployments</h2>
+    <p>Your capstone is not a separate assignment at the end; it is the same project growing through the whole journey. Each work sprint applies that day's material to your project, and five times along the way you deploy what you have.</p>
+    <div class="deployments">
+      <div class="dep">
+        <span class="dep-chip">Deployment 1</span>
+        <p>A full-stack, single-turn LLM app — your idea, live for the first time.</p>
+      </div>
+      <div class="dep">
+        <span class="dep-chip">Deployment 2</span>
+        <p>A designed user experience on a deployed public website.</p>
+      </div>
+      <div class="dep">
+        <span class="dep-chip">Deployment 3</span>
+        <p>Agentic RAG — your app now reasons over your own documents.</p>
+      </div>
+      <div class="dep">
+        <span class="dep-chip">Deployment 4</span>
+        <p>Automated workflows with retrieval built in.</p>
+      </div>
+      <div class="dep">
+        <span class="dep-chip">Deployment 5</span>
+        <p>Multi-agent orchestration — the finished capstone system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="howto">
+  <div class="wrap">
+    <h2>How to use this roadmap</h2>
+    <ul>
+      <li>Before each session, find it on this page and read the arc it belongs to, so you know what the day is building towards.</li>
+      <li>Treat the four building blocks (sessions 6, 9, 10, and 12) as the load-bearing sessions; each one adds a capability your capstone depends on.</li>
+      <li>Come to every capstone work sprint with your project ready to extend — the sprints are where the course becomes your own work.</li>
+      <li>If you fall behind, prioritise the deployments; each one is a checkpoint that proves the previous arc landed.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>Swarup Biswas | swarupbiswas.com</span>
+    <span>SCTP DSAI · Modules 5 &amp; 6 · v1</span>
+  </footer>
+</div>
+
+</body>
+</html>
