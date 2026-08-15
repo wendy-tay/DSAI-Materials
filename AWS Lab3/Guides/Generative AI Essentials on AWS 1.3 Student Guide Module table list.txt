@@ -1,0 +1,9 @@
+Generative AI Essentials on AWS 1.3.3 (EN): Student Guide
+Module 1 : Introducing Generative AI
+Module 2 : Selecting Business Problem
+Module 3 : Essentials of Prompt Engineering
+Module 4 : Responsible AI Principles and Considerations
+Module 5 : Security and Compliance for Generative AI Solution
+Module 6 : Implementing Generative AI Projects
+Module 7 : Integrating Generative AI into Development Lifecycle 
+Module 8 : Wrap-up

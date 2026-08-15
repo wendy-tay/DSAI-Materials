@@ -1,0 +1,48 @@
+# Foundation Model Selection Rubric
+
+## Categories and Criteria
+
+### 1. **Alignment with Use Case Requirements**
+- **Contextual Relevance**: Ability to generate content relevant to specific tasks (e.g., customer service, document summarization) (Max: 10 points)
+  - **10**: Highly relevant content with minimal additional input
+  - **7**: Mostly relevant content with some additional input
+  - **5**: Relevant content with significant additional input
+  - **3**: Somewhat relevant content with extensive additional input
+  - **1**: Irrelevant content
+
+- **Customization Flexibility**: Ability to fine-tune the model to specific internal processes and brand voice (Max: 10 points)
+  - **10**: Highly customizable with minimal effort
+  - **7**: Customizable with some effort
+  - **5**: Moderately customizable with significant effort
+  - **3**: Slightly customizable with extensive effort
+  - **1**: Not customizable
+
+### 2. **Performance and Scalability**
+- **Initial Benchmark Performance**: Performance on standard benchmarks (Max: 10 points)
+  - **10**: Excellent performance
+  - **7**: Good performance
+  - **5**: Average performance
+  - **3**: Below average performance
+  - **1**: Poor performance
+
+- **Scalability**: Ability to handle large volumes of requests without significant performance degradation (Max: 10 points)
+  - **10**: Excellent scalability
+  - **7**: Good scalability
+  - **5**: Moderate scalability
+  - **3**: Poor scalability
+  - **1**: Very poor scalability
+
+### 3. **Ethical Considerations and Bias Mitigation**
+- **Bias Detection and Mitigation**: Presence and effectiveness of tools for detecting and mitigating biases (Max: 10 points)
+  - **10**: Comprehensive bias detection and mitigation tools
+  - **7**: Effective bias detection tools with moderate mitigation
+  - **5**: Basic bias detection tools with limited mitigation
+  - **3**: Minimal bias detection tools with no mitigation
+  - **1**: No bias detection or mitigation tools
+
+- **Ethical Compliance**: Adherence to ethical guidelines and responsible AI principles (Max: 10 points)
+  - **10**: Full compliance with ethical guidelines
+  - **7**: Mostly compliant with ethical guidelines
+  - **5**: Partially compliant with ethical guidelines
+  - **3**: Minimally compliant with ethical guidelines
+  - **
